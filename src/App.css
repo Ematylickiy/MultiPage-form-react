@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+.steps {
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.step {
+  position: relative;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
   align-items: center;
+}
+
+.step__title {
+  font-weight: 700;
+}
+
+.step:not(:first-child)::before {
+  height: 0.5em;
+  width: 100%;
+  bottom: 0;
+  left: -50%;
+  top: 1rem;
+  content: " ";
+  display: block;
+  position: absolute;
+  background: #b5b5b5;
+}
+.step__marker {
+  z-index: 1;
+  width: 35px;
+  height: 35px;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: 700;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: #b5b5b5;
+  color: #fff;
+  border: 4px solid #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.step.is-completed .step__marker {
+  background: #ce2a05;
+  border: 4px solid #750000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.step.is-active:not(:first-child)::before,
+.step.is-completed:not(:first-child)::before {
+  background: #b30f0f;
 }
+
+.step.is-active .step__marker {
+  background: #0fd85f;
+  border: 4px solid #2b8000;
+}
+

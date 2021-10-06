@@ -4,7 +4,7 @@ import { useHistory  } from "react-router-dom"
 function StartPage() {
     let history = useHistory();
 
-    const handleClick = (path) => history.push(path)
+    const handleClick = (path) => history.push(path);
     
     return (
         <div>

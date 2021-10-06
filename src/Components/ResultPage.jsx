@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 function ResultPage() {
     let history = useHistory();
-    const handleClick = (path) => history.push(path)
+    const handleClick = (path) => history.push(path);
     
     const submitForm = () => {
         localStorage.clear()
@@ -11,7 +11,6 @@ function ResultPage() {
 
         setTimeout(() => handleClick('/'), 1000) 
     }
-
 
     return (
         <div>
@@ -25,8 +24,8 @@ function ResultPage() {
                             <h4 className="card-title ">Personal information:</h4>
                             <br />
                             <div className="p-3 mb-2 bg-light text-dark">
-                                <p className="card-text">First name: <span className='bold'>{localStorage.getItem('name')}</span></p>
-                                <p className="card-text">Last name: <span className='bold'>{localStorage.getItem('surname')}</span></p>
+                                <p className="card-text">First name: <span className='bold'>{localStorage.getItem('First name')}</span></p>
+                                <p className="card-text">Last name: <span className='bold'>{localStorage.getItem('Last name')}</span></p>
                                 <Link to='/step1/edit' className="btn btn-outline-primary">Edit</Link>
                             </div>
                             <div className='p-3 mb-2 bg-light text-dark'>
@@ -78,3 +77,25 @@ function ResultPage() {
 }
 
 export default ResultPage
+
+
+
+
+// state = {
+//     smart: {
+//         iphone_11: {
+//             id: 1,
+//             memory: 64
+//         },
+//         sams: {
+//             id: 2,
+//             memory: 128
+//         }
+//     },
+//     laptop: {
+//         asus: {
+//             id: 1,
+//         }
+//     }
+// }
+// /smart/1

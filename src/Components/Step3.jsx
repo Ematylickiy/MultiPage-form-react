@@ -1,34 +1,31 @@
 import { useHistory } from "react-router-dom"
 import { useEffect, useState } from "react";
 import ButtonsGroup from "./ButtonsGroup";
+import { handleForm } from "../config";
 
 
 
 const Step3 = ({path, to='/step2', textLink='Back', textBtn='Next'}) => {
     
     let history = useHistory();
-    const handleClick = (path) => history.push(path)
+    const handleClick = (path) => history.push(path);
 
-    const [passportNum, setPassportNum] = useState('')
-    const [dateOfIssue, setDateOfIssue] = useState('')
-    const [dateValid, setDateValid] = useState('')
-    const [ussuedBy, setUssuedBy] = useState('')
-    const [otherInpDocument, setOtherInpDocument] = useState('')
-    const [required, setRequared] = useState(false)
+    const [passportNum, setPassportNum] = useState('');
+    const [dateOfIssue, setDateOfIssue] = useState('');
+    const [dateValid, setDateValid] = useState('');
+    const [ussuedBy, setUssuedBy] = useState('');
+    const [otherInpDocument, setOtherInpDocument] = useState('');
+    const [required, setRequared] = useState(false);
 
+    const allNamesInp = ['typeDocument', 'passportNum', "dateOfIssue", 'dateValid', 'ussuedBy'];
+    const typeDocuments = ['Ordinary passport', 'Diplomatic passport', 'ID Card'];
 
-    const handleStep_3 = (event) => {
-        event.preventDefault()
+    const validationFormAndSubmit = (event) => {
         const formData = new FormData(event.target);
-        localStorage.setItem('typeDocument', formData.get('typeDocument'))
-        localStorage.setItem("passportNum", formData.get('passportNum'))
-        localStorage.setItem("dateOfIssue", formData.get('dateOfIssue'))
-        localStorage.setItem("dateValid", formData.get('dateValid'))
-        localStorage.setItem("ussuedBy", formData.get('ussuedBy'))
+        handleForm(event, allNamesInp, handleClick, path)
         if (formData.get('typeDocument') === 'other') {
             localStorage.setItem('typeDocument', otherInpDocument)
         }
-        handleClick(path)
     }
 
     useEffect(() => {
@@ -41,28 +38,25 @@ const Step3 = ({path, to='/step2', textLink='Back', textBtn='Next'}) => {
     return (
         <div className='wrap-page-step1'>
             <h2 className='text-center p-2'>Document information</h2>
-            <form onSubmit={handleStep_3}>
+            <form onSubmit={validationFormAndSubmit}>
             <div className='field '>
                     <div className='field mx-auto'>
                         <p className='form-label'>Type of document:</p>
                         <div className='border-field' onChange={(e)=>e.target.value === 'other' ? setRequared(true) : setRequared(false)}>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="typeDocument" id="ordinary" value="Ordinary passport" defaultChecked/>
-                                <label className="form-check-label" htmlFor="ordinary">Ordinary passport</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="typeDocument" id="diplomatic" value="Diplomatic passport"/>
-                                <label className="form-check-label" htmlFor="diplomatic">Diplomatic passport</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="typeDocument" id="idCard" value="ID Card"/>
-                                <label className="form-check-label" htmlFor="idCard">ID card</label>
-                            </div>
+                            
+                            {typeDocuments.map(type => (
+                                <div key={type} className="form-check form-check-inline">
+                                    <input className="form-check-input" type="radio" name="typeDocument" id={type} value={type} required/>
+                                    <label className="form-check-label" htmlFor={type}>{type}</label>
+                                </div>
+                            ))}
+
                             <div className="form-check form-check-inline">
                                 <input className="form-check-input" type="radio" name="typeDocument" id="otherDoc" value="other"/>
                                 <label className="form-check-label" htmlFor="other">Other:</label>
                                 <input required={required} type="text" className="form-control" value={otherInpDocument || ''} onChange={(e)=>setOtherInpDocument(e.target.value)}/>
                             </div>
+                        
                         </div>
                     </div>
                 </div>

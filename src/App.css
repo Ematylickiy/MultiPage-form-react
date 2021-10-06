@@ -78,10 +78,10 @@ body {
   justify-content: space-between;
 }
 
-.center {
-  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
-
 
 .field {
   margin-top: 10px;

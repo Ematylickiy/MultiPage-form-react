@@ -1,13 +1,13 @@
 import { BrowserRouter as  Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
-import Steps from './Steps';
-import StartPage from './StartPage';
-import ResultPage from './ResultPage';
-import Step4 from './Step4';
-import SuccedPage from './SuccedPage';
+import Step1 from './Components/Step1';
+import Step2 from './Components/Step2';
+import Step3 from './Components/Step3';
+import Steps from './Components/Steps';
+import StartPage from './Components/StartPage';
+import ResultPage from './Components/ResultPage';
+import Step4 from './Components/Step4';
+import SuccedPage from './Components/SuccedPage';
 
 
 function App() {

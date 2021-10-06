@@ -3,19 +3,17 @@ import { useEffect, useState } from "react";
 import ButtonsGroup from "./ButtonsGroup";
 
 
-
 const Step1 = ({path, to='/', textLink='Back', textBtn='Next'}) => {
 
     let history = useHistory();
-    const handleClick = (path) => history.push(path)
+    const handleClick = (path) => history.push(path);
     
-    const [name, setName] = useState('')
-    const [surname, setSurname] = useState('')
-
-
-        useEffect(() => {
-                setName(localStorage.getItem('name'))
-                setSurname(localStorage.getItem('surname'))
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    
+    useEffect(() => {
+            setName(localStorage.getItem('name'))
+            setSurname(localStorage.getItem('surname'))
         }, []);
 
     function handleStep_1(event) {
@@ -29,6 +27,7 @@ const Step1 = ({path, to='/', textLink='Back', textBtn='Next'}) => {
     return (
         <div className='wrap-page-step1'>
             <h2 className='text-center p-2'>Personal information</h2>
+            
             <form onSubmit={handleStep_1} className='needs-validation'>
                 <div className='field'>
                     <label className="form-label">First name</label>
@@ -39,7 +38,6 @@ const Step1 = ({path, to='/', textLink='Back', textBtn='Next'}) => {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
-                
                 <div className='field'>
                     <label className="form-label">Last name</label>
                     <input className="form-control"
@@ -49,7 +47,6 @@ const Step1 = ({path, to='/', textLink='Back', textBtn='Next'}) => {
                         onChange={(e) => setSurname(e.target.value)}
                     />
                 </div>
-
                 <ButtonsGroup to={to} textLink={textLink} textBtn={textBtn}/>
             </form>
         </div>

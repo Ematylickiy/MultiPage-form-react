@@ -7,11 +7,9 @@ function ResultPage() {
     
     const submitForm = () => {
         localStorage.clear()
-        
         handleClick('/succeed')
-        setTimeout(() => {
-            handleClick('/')
-        }, 1000) 
+
+        setTimeout(() => handleClick('/'), 1000) 
     }
 
 

@@ -5,17 +5,17 @@ import ButtonsGroup from "./ButtonsGroup";
 
 
 const Step3 = ({path, to='/step2', textLink='Back', textBtn='Next'}) => {
+    
     let history = useHistory();
     const handleClick = (path) => history.push(path)
-
 
     const [passportNum, setPassportNum] = useState('')
     const [dateOfIssue, setDateOfIssue] = useState('')
     const [dateValid, setDateValid] = useState('')
     const [ussuedBy, setUssuedBy] = useState('')
     const [otherInpDocument, setOtherInpDocument] = useState('')
-
     const [required, setRequared] = useState(false)
+
 
     const handleStep_3 = (event) => {
         event.preventDefault()
@@ -33,11 +33,10 @@ const Step3 = ({path, to='/step2', textLink='Back', textBtn='Next'}) => {
 
     useEffect(() => {
         setPassportNum(localStorage.getItem('passportNum'))
-        
         setDateOfIssue(localStorage.getItem('dateOfIssue'))
         setDateValid(localStorage.getItem('dateValid'))
         setUssuedBy(localStorage.getItem('ussuedBy'))
-}, []);
+    }, []);
 
     return (
         <div className='wrap-page-step1'>
@@ -89,7 +88,6 @@ const Step3 = ({path, to='/step2', textLink='Back', textBtn='Next'}) => {
                     <label className='form-label'>Ussued by</label>
                     <input required className="form-control" name='ussuedBy' autoComplete='off' value={ussuedBy || ''} onChange={e=>{setUssuedBy(e.target.value)}}/>
                 </div>
-
                 
                 <ButtonsGroup to={to} textLink={textLink} textBtn={textBtn}/>
             </form>

@@ -5,6 +5,7 @@ import ButtonsGroup from "./ButtonsGroup";
 
 
 function Step4({path, to='/step3', textLink='Back', textBtn='Next'}) {
+    
     let history = useHistory();
     const handleClick = (path) => history.push(path)
 
@@ -15,16 +16,15 @@ function Step4({path, to='/step3', textLink='Back', textBtn='Next'}) {
     
     const handleStep_4 = (event) => {
         event.preventDefault();
-
         const formData = new FormData(event.target);
-        if (formData.get('countryTrip') === 'Сhoose a country') {
-            return setClassValidaion('invalid-feedback')
-        }
+            if (formData.get('countryTrip') === 'Сhoose a country') {
+                return setClassValidaion('invalid-feedback')
+            }
         localStorage.setItem("countryTrip", formData.get('countryTrip'));
         localStorage.setItem("tripPurpose", formData.get('tripPurpose'));
-        if (formData.get('tripPurpose') === 'other') {
-            localStorage.setItem('tripPurpose', otherInpPurpose)
-        }
+            if (formData.get('tripPurpose') === 'other') {
+                localStorage.setItem('tripPurpose', otherInpPurpose)
+            }
         localStorage.setItem("duration", formData.get('duration'))
         handleClick(path)
     }
@@ -87,7 +87,6 @@ function Step4({path, to='/step3', textLink='Back', textBtn='Next'}) {
                         </div>
                     </div>
                 </div>
-
 
                     <div className='field'>
                         <label className='form-label'>Duration of stay (no more 180 days)</label>

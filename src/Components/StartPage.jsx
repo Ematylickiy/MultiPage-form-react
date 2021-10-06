@@ -6,7 +6,6 @@ function StartPage() {
 
     const handleClick = (path) => history.push(path)
     
-    
     return (
         <div>
             <h1 className='text-center p-3'>Application for Schengen Visa</h1>
